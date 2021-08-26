@@ -1,6 +1,6 @@
 // declare function
 const getBook = function(){
-
+  event.preventDefault(); //don't leave the page
   const title = document.getElementById('search').value;
   const xhr = new XMLHttpRequest();
   xhr.open('GET', `https://www.googleapis.com/books/v1/volumes?q=title:${title}`);
@@ -35,5 +35,8 @@ const getBook = function(){
 };
 
 //attach function to button
-document.getElementById('submit').addEventListener('click', getBook);
+//my way
+// document.getElementById('submit').addEventListener('click', getBook);
+//joel's way - wrap the input in a form tag and then add event.preventDefault to not leave the page
+document.querySelector('form').addEventListener('submit', getBook)
 //display on page
